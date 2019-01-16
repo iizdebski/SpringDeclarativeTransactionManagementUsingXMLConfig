@@ -2,28 +2,28 @@ package com.izdebski.model;
 
 public class Account {
 
-    private Integer accountNumber;
+    private Long accountNumber;
+    private String accountType;
     private Double accountBalance;
-    private String accounType;
     private String accountHolderName;
 
-    public Integer getAccountNumber() {
+    public Long getAccountNumber() {
         return accountNumber;
     }
-    public void setAccountNumber(Integer accountNumber) {
+    public void setAccountNumber(Long accountNumber) {
         this.accountNumber = accountNumber;
+    }
+    public String getAccountType() {
+        return accountType;
+    }
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
     public Double getAccountBalance() {
         return accountBalance;
     }
     public void setAccountBalance(Double accountBalance) {
         this.accountBalance = accountBalance;
-    }
-    public String getAccounType() {
-        return accounType;
-    }
-    public void setAccounType(String accounType) {
-        this.accounType = accounType;
     }
     public String getAccountHolderName() {
         return accountHolderName;
