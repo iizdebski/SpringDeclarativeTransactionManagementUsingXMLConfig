@@ -44,7 +44,7 @@ public class BankDaoImpl implements BankDao {
         String SQL="UPDATE icici_bank set account_balance=? WHERE account_no=?";
         int update = getJdbcTemplate().update(SQL, accountBalance,toAccount.getAccountNumber());
         if(update>0){
-            System.out.println("Amount Rs:"+amount+" is deposited in Account No:"+toAccount.getAccountNumber());
+            //System.out.println("Amount Rs:"+amount+" is deposited in Account No:"+toAccount.getAccountNumber());
         }
         //throw new RuntimeException();
     }

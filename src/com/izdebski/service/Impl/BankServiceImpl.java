@@ -10,7 +10,6 @@ import com.izdebski.service.BankService;
 
 public class BankServiceImpl implements BankService {
 
-
     private BankDao bankDao;
 
     public void setBankDao(BankDao bankDao) {
@@ -21,12 +20,9 @@ public class BankServiceImpl implements BankService {
         return bankDao;
     }
 
-    @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, readOnly = false, timeout = 100, rollbackFor = Exception.class)
     public void transferFund(Account fromAccount, Account toAccount,
                              Double amount) throws InsufficientAccountBalanceException {
         getBankDao().withdraw(fromAccount, toAccount, amount);
         getBankDao().deposit(fromAccount, toAccount, amount);
-
     }
-
 }

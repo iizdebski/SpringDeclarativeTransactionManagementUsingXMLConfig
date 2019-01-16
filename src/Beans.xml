@@ -12,8 +12,17 @@ http://www.springframework.org/schema/context/spring-context.xsd
 http://www.springframework.org/schema/tx
 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
-    <bean id="bankService" class="com.izdebski.service.Impl.BankServiceImpl">
+    <aop:config proxy-target-class="true">
+        <aop:advisor advice-ref="transactionAdvice" pointcut="execution(* com.izdebski.service.Impl.BankServiceImpl.transfer*(..))"/>
+    </aop:config>
+
+    <tx:advice id="transactionAdvice">
+        <tx:attributes>
+            <tx:method name="transfer*" isolation="READ_COMMITTED" read-only="false"
+                       propagation="REQUIRED" timeout="100" rollback-for="java.lang.Exception"/>
+        </tx:attributes>
+    </tx:advice>
+        <bean id="bankService" class="com.izdebski.service.Impl.BankServiceImpl">
         <property name="bankDao" ref="bankDao"></property>
     </bean>
 
